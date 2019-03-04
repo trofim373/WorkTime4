@@ -1,0 +1,269 @@
+<html manifest = "example.appcache">
+    <head>
+        <meta name="viewport" content="width=device-width; initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>WorkTime4</title>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="./style.css" />
+        
+    </head>
+    <body>
+    <!--h6 onclick="window.location ='#o';">1</h6-->
+    <main>
+        <time>WorkTime4</time>
+        <p></p>
+        <i></i>
+        <table>
+            <tr>
+        <td class="ok">Пн</td><td class="ok">Вт</td><td class="ok">Ср</td><td class="ok">Чт</td><td class="ok">Пт</td><td class="ok">Сб</td><td class="ok">Вс</td>   
+            </tr>
+        </table>
+        <table></table>
+    </main> 
+    <article id="o">
+    
+        <a href="http://wolf-gd.ucoz.ru/wtime/" target="_blank">WorkTime4</a>
+        <br/><br/>
+        Выбор графика:<br/>
+        <div>
+JavaScript[X];
+        </div>
+        <br/><br/><br/>
+		
+<script type="text/javascript" src="http://wolf-gd.ucoz.ru/wtime/h.js"></script>
+        <br/>&emsp;
+        
+    </article>
+    
+<canvas width="800px" height="800px"></canvas>
+
+        
+        <br/>
+      
+
+
+<script type="text/javascript" >
+
+/*временная память*/
+var w = new Array();
+/*Память для названия недель*/
+var wi = new Array("Воскресение","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота");
+/*Память месяца*/
+var wm = new Array("Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь");
+var wmla = new Array("Января","Февраля","Марта","Апреля","Мая","Июня","Июля","Августа","Сентября","Октября","Ноября","Декабря");
+
+/*сегодня*/
+var z = new Date();
+var z0 = new Date();
+/*Ночью часы сбиваются дни не те, с 00:00 до 05:00, исправляем*/
+if(z.getHours()<5){z.setHours(z.getHours()+5);}
+
+
+
+/*Выбор график***********************************************************************/
+//if(getCookie("gr")){gr(getCookie("gr")*1);}else{gr(1);}
+gr(2);
+/*Ставим стандартную смену из куков*/
+/*смена графика i-на какой день*/
+function gr(i){
+   w[0]=i;setCookie("gr", i + "");
+   //document.getElementsByTagName("h6")[0].innerHTML=i;
+    bm(z0.getUTCMonth(),z0.getUTCFullYear()); 
+}
+
+
+
+
+/*часики с верху*/
+var timer = setInterval(function() {
+var z0 = new Date();
+/*Для отображения 0 спереди одиночной цифры*/
+if(z0.getHours()<10){w[1]='0' + z0.getHours();}else{w[1]=z0.getHours();}
+if(z0.getMinutes()<10){w[2]='0' + z0.getMinutes();}else{w[2]=z0.getMinutes();}
+if(z0.getSeconds()<10){w[3]='0' + z0.getSeconds();}else{w[3]=z0.getSeconds();}
+document.getElementsByTagName("time")[0].innerHTML = w[1] + ':' + w[2] + ':' + w[3];
+}, 1000);
+
+
+
+
+
+
+/*синяя полоса*/
+var z33 = new Date();
+document.getElementsByTagName("p")[0].innerHTML = wi[z33.getUTCDay()] + ', ' + z33.getDate() + ' ' + wmla[z33.getUTCMonth()] + ' ' + z33.getUTCFullYear() + ' г.' ;
+
+
+
+
+
+
+/*Будет месяц,  Вводим месяц и год*/
+function bm(mes, god){
+    var str = '';/*То, что потом введем*/
+
+/*спустить дату на 14 год*/
+while(z.getUTCFullYear() != 2014){
+    z.setDate(z.getDate()-1);
+}
+/*Поднятие на наш график*/
+z.setDate(z.getDate()+w[0]);
+
+
+    var kol=0;
+/*расчитать до нашего месяца
+Пока что год не равняется текущему и месяц не равняется
+текущему, то прибавляя дни прокручиваем граффик из 4*/
+while((z.getUTCFullYear() != god) || (z.getUTCMonth() != mes)){
+    if(kol==4){kol=0;} kol++;
+    z.setDate(z.getDate()+1);
+} 
+
+/*пробеловые дни в начале
+Чек позицию недели, пока неделя не равняется
+понедельнику, то прибавляем пустое поле*/
+var k2 = z.getUTCDay();
+while(k2 != 1){ 
+if(k2<1){k2=7;}
+    k2--;
+str +='<td class="ok m">n</td>';
+}
+
+
+/*вывод текущего месяца
+Запоминаем текущий месяц, пока что этот месяц идет*/
+w[7]=0;
+w[4]=z.getUTCMonth();
+while(w[4]==z.getUTCMonth()){
+    if(kol>3){kol=0;} kol++;/*Продолжаем считалку 4*/
+    /*сейчас. Если сегодня тогда К в стиле*/
+    if(z0.getDate() == z.getDate() && z0.getUTCMonth()==z.getUTCMonth() && z0.getUTCFullYear()==z.getUTCFullYear()){
+            w[5]='k';
+            w[7]=kol;/*Запоминаем работаем ли сегодня*/
+        }else{w[5]='';}
+    str +='<td class="ok m' + kol + w[5] +'">' + z.getDate() + '</td>';
+    /*Переход на строку*/if(z.getUTCDay() == 0){str += '</tr><tr>';}
+
+
+    /*Следующий день*/z.setDate(z.getDate()+1);
+}
+
+//пробеловые дни в кнце
+var k2 = z.getUTCDay();
+while(k2 != 1){ 
+if(k2 == 7){ k2=0;}
+    k2++;
+str +='<td class="ok m">n</td>';
+}
+
+
+
+
+
+//Подбиваем кнопки
+var b0; var b1;
+if(mes == 0){ if(god == 2015){str ='<br />Раньше нельзя!<br />';b0 ='0,2015';}else{b0 = 11 + ',' + (god-1);} }else{b0=mes-1  + ',' + god;}
+if(mes == 11){ b1 = 0 + ',' + (god+1); }else{b1=mes+1  + ',' + god;}
+
+document.getElementsByTagName('i')[0].innerHTML = '<button onclick="bm(' + b0 + ')">&lt;</button>' + wm[mes] + ' ' + god + '<button onclick="bm(' + b1 + ')">&gt;</button><br />';
+
+
+document.getElementsByTagName("table")[1].innerHTML  = '<tr>'+ str +'</tr>';
+}
+
+
+/*Забиваем кнопки выбора графика
+в8 что будет выводится в область
+в7 какой рабочий день сегодня, в данный график
+в0 тот график, который сейчас
+*/
+w[8]=''; //w[7]++;
+for(i=1;i<5;i++){
+    if(w[7]>4){w[7]=1;} //Продолжаем считалку 4 
+    if(i==3){w[8]+='<br/>';}//ставим энтр class="m'+ w[7]+ '" 
+    w[8]+='<button onclick="window.location =\'#\';gr(' +i+ ')">' +i+ '</button>';
+    w[7]++;
+}
+document.getElementsByTagName("div")[0].innerHTML =w[8];
+
+
+
+
+//рисунм фон
+  var ca = document.getElementsByTagName("canvas")[0];
+  var x = ca.getContext("2d");
+/*цвета*/
+var wc = new Array('16b','7db9e8','8c3310','4e4e4e','136','136','136','136','136','136','136','136','136','136','136','136','136','136','136','F99100','136','136','0b5','136');
+var wc1= new Array('012','1E5799','BC8571','010101','369','369','369','369','369','369','369','369','369','369','369','369','369','a0b','824','EFE24F','369','369','054','369');
+
+var my_gradient = x.createLinearGradient(800, 0, 0, 800);
+my_gradient.addColorStop(0, '#' + wc[z0.getHours()]); 
+my_gradient.addColorStop(1, '#' + wc1[z0.getHours()]);
+x.fillStyle = my_gradient;
+x.fillRect(0, 0, 800, 800);//залить кубик
+
+//лента
+x.moveTo(535,0);
+x.quadraticCurveTo(450, 150, 0, 335);
+x.lineTo(0,800);
+x.lineTo(80,800);
+x.quadraticCurveTo(180, 345, 800, 100);
+x.lineTo(800,0);
+x.closePath();
+x.fillStyle = "#eee";
+x.fill();
+//x.stroke();
+        
+
+
+
+
+
+/*Сохраняет куки под именем на */
+function setCookie(c_name,value)
+{
+var exdate=new Date();
+exdate.setDate(exdate.getUTCFullYear() + 100);
+var c_value=escape(value) + ";expires="+exdate.toUTCString();
+document.cookie=c_name + "=" + c_value;
+}
+  
+function delCookie(c_name)
+{
+var value="";
+var exdate=new Date();
+exdate.setDate(exdate.getUTCFullYear() - 100);
+var c_value=escape(value) + ";expires="+exdate.toUTCString();
+document.cookie=c_name + "=" + c_value;
+alert('После перезагрузки');
+}
+
+function getCookie(c_name)
+{
+var i,x,y,ARRcookies=document.cookie.split(";");
+for (i=0;i<ARRcookies.length;i++)
+{
+  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+  x=x.replace(/^\s+|\s+$/g,"");
+  if (x==c_name)
+    {
+    return unescape(y);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

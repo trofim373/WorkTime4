@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">WorkTime4</string>
+    <string name="banner_ad_unit_id">ca-app-pub-1716349820677911/8371524519</string>
+    <string name="bt_seting">+</string>
+
+    <string name="bt_gr1">1</string>
+    <string name="bt_gr2">2</string>
+    <string name="bt_gr3">3</string>
+    <string name="bt_gr4">4</string>
+    <string name="about">О приложении</string>
+    <string name="about_txt">Приложение создано ETSoftapp Developer(Евгений Трофимов) при поддержке H7team(Евгений Ивлев).\n\n\nКонтакты:\n\nЕвгений Трофимов:\ne-mail: s163nk@ya.ru\n\n\nВерсия приложения: 1.1</string>
+
+    <string name="exit">Выход</string>
+    <string name="privacy">Политика конф.</string>
+
+    <string name="button"></string>
+    <string name="select_gr">Выбрать график:</string>
+    <string name="setgraphic">Выберите график:</string>
+
+
+</resources>

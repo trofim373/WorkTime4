@@ -1,0 +1,229 @@
+body{padding:0px;margin:0px;
+    -webkit-filter: hue-rotate(0deg);
+text-align:center;
+//background:url(http://wolf-gd.ucoz.ru/wtime/bg3.jpg) center center #777;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+z-index: 1;
+}
+canvas{
+    z-index: -1;
+    display: inline-block;     position: absolute; 
+     top:0px;left:0px;
+     width: 100%;
+     height:100%;
+}
+
+
+
+main{
+    margin: 0 auto 10 auto;
+    padding:15px 0px 10px 0px;
+    max-width:555px;
+    min-width:100px;
+    background: rgba(255,255,255,0.8);
+}
+
+
+
+time{
+    color:#000;
+    text-align:center;
+    display:none;
+    padding:3px 15px;
+    font-size:73px;  
+    font-weight: 100;
+    text-shadow: 0px 1px 3px #000;
+}
+
+
+
+p{
+    color:#000;
+    text-align:center;
+    margin: 0px;
+    padding: 0px 5px 15px;
+    font-size: 23px;
+}
+
+
+
+article {
+    display:none;
+    background: #fff;
+    position:absolute;
+    top:0px;left:0px;
+    padding:25px 0px;
+    margin:80px auto;
+    width: 100%;
+
+}
+article:target {display:block;}
+
+table{
+    padding:2px 5px;
+    max-width:500px;
+    min-width:300px;
+    margin:auto;
+}
+
+
+i{
+
+font-style: normal;
+font-weight:bold;
+    text-decoration:none;
+    font-size:28px;
+    }
+
+h6{margin:0px;padding:0px;
+    font-size:25px;  
+    display:inline-block;
+    position:absolute;
+    top:105px;
+    right:20px;
+border-radius:50px;
+        width:40px;
+    height:40px;
+ background:#f90; color:#000; box-shadow: inset 0px 10px 0px #fa0;
+ border-style: solid;
+ border-color: rgba(0,0,0,0);
+ line-height: 45px;
+}
+
+main button {
+    outline: none;
+    border-radius:50px;
+    width:40px;
+    height:40px;
+    margin:0px 7px 0px;
+    font-size:20px; 
+    text-align:center;
+    background:#037; color:#eee; 
+    border-width:0px;
+    
+    display:inline-block;
+     border-style: solid;
+     border-color:#444
+    
+}
+
+main button:active {
+    position:relative;
+    top:3px;
+    background:#555; color:#eee; box-shadow: inset 0px 8px 0px #777;
+}
+
+
+article button{padding:10px 20px;
+    font-size:25px;  
+    margin:2px;
+    width:85px; height:85px;
+
+    outline: none;text-decoration:none;
+    cursor:pointer;
+    color:#000;font-weight:bold;
+font-family:Geneva, Arial, Helvetica, sans-serif;
+    background:linear-gradient(to top, #fff, #bbb) #000;
+    border-radius:7px; 
+    display:inline-block;
+}
+article button:hover{background:#777;color:#fff;}
+article button:active{position:relative;top:1px;background:#f00;color:#fff;}
+
+
+tbody{
+       line-height: 31px;
+}
+
+.ok{
+    border-radius:50px;
+    font-size:19px;
+    text-align:center;
+    margin:2px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0);
+    border-width:3px;
+    padding:1px;
+    width:30px;
+    height:30px;
+    color:#000;
+    display: inline-block;
+    vertical-align:top;
+}
+
+.m4{background:#f90; color:#037; }
+.m1{background:#037; color:#fff;  }
+.m{color:rgba(0,0,0,0);}
+
+.m1k{border-color:#f00; background:#037; color:#fff; box-shadow:0px 0px 10px #f00;}
+.m2k{border-color:#00f;}
+.m3k{border-color:#00f;}
+.m4k{border-color:#f00; background:#f90; color:#037;}
+a{
+display: inline-block;
+padding-top:15px;
+font-weight: 900; 
+font-size: 40px;
+text-decoration: none;
+color:#f00;
+ }
+
+@media all and (max-width: 333px) {
+    table{
+        min-width: auto;
+    }
+    .ok{
+        width:25px;
+        height:25px; 
+        font-size:14px;
+      line-height: 1.8;
+
+    }
+    time{
+        padding:0px 0px;
+        font-size:30px;
+    }
+    i{
+         font-size: 29px;
+
+    }
+    main button {
+        outline: none;
+        border-radius:50px;
+        width:30px;
+        height:30px;
+    }
+    p{
+        font-size:30px;
+    }
+}
+
+
+
+
+@media all and (max-width: 280px) {
+    table{
+        min-width: auto;
+    }
+    .ok{
+        width:20px;
+        height:20px; 
+        font-size:14px;
+                  line-height: 1.5;
+
+    }
+    time{
+        padding:0px 0px;
+        font-size: 50px;
+    }
+    i{
+         font-size: 19px;
+
+    }
+    main button {
+        outline: none;
+        border-radius:50px;
+        width:30px;
+        height:30px;
+    }
+}      
