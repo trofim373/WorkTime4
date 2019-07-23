@@ -9,3 +9,8 @@
 /build
 /captures
 .externalNativeBuild
+/.idea/misc.xml
+*.apk
+*.aab
+/app/realise
+/app/build
